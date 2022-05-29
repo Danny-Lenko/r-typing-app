@@ -36,7 +36,8 @@ h2 {
 textarea {
   font-family: "Press Start 2P", cursive;
   border: 3px solid black;
-  width: 90%;
+  max-width: 90%;
+  width: 600px;
   margin: 0 auto;
   outline: none;
   height: 200px;
