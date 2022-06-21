@@ -12,8 +12,10 @@ function App() {
 
   useEffect(() => {
     const timerId = setTimeout(() => {
-      setTimer(prevState => prevState - 1)
-      setInterval(prevState => !prevState)
+      if (countStarted) {
+        setTimer(prevState => prevState - 1)
+        setInterval(prevState => !prevState)  
+      }
     }, 1000)
     if (timer <= 0) manageTimeIsOut(timerId)
   }, [countStarted, interval])
