@@ -1,36 +1,41 @@
-import "./styles.css";
-import React from "react";
-import useWordsCounter from "./hooks/useWordsCounter";
+import React from 'react'
+import useWordsCounter from './hooks/useWordsCounter'
+import './styles.css'
 
-export default function App() {
+function App() {
   const {
-    text,
-    handleChange,
-    timerStarted,
-    textareaRef,
-    timeLeft,
+    ref,
+    userMsg,
     startTimer,
-    wordsCount
-  } = useWordsCounter(10);
+    handleUserInput,
+    timer,
+    countStarted,
+    wordCount                  
+  } = useWordsCounter(7)
 
-  return (
-    <div className="App">
+  return(
+    <>
       <h2>How fast do you type?</h2>
 
       <textarea
-        value={text}
-        onChange={handleChange}
-        disabled={!timerStarted}
-        ref={textareaRef}
-      />
+        disabled 
+        ref={ref}
+        value={userMsg}
+        onChange={e => handleUserInput(e)}
+      ></textarea>
 
-      <p>Time remaining: {timeLeft}</p>
+      <p>Time remaining: {timer}</p>
 
-      <button onClick={startTimer} disabled={timerStarted}>
+      <button
+        onClick={startTimer}
+        disabled={countStarted ? true : false}
+      >
         Start
       </button>
 
-      <h2>Word count: {wordsCount}</h2>
-    </div>
-  );
+      <h2>Word Count: {wordCount}</h2>
+    </>
+  )
 }
+
+export default App
